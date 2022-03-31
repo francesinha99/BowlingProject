@@ -18,9 +18,10 @@ namespace BowlingProject.Controllers
             _repo = temp;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string bowlerTeam)
         {
             var bowlers = _repo.Bowlers
+                .Where(b => b.Team.TeamName == bowlerTeam)
                 .ToList();
 
             return View(bowlers);
