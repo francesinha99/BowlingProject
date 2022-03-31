@@ -20,13 +20,13 @@ namespace BowlingProject.Controllers
 
         public IActionResult Index(string bowlerTeam)
         {
-            var bowlers = _repo.Bowlers
-                .Where(b => b.Team.TeamName == bowlerTeam)
+            List<Bowler> bowlers = _repo.Bowlers
+                .Where(b => b.Team.TeamName == bowlerTeam || bowlerTeam == null)
+                .OrderBy(b => b.BowlerID)
                 .ToList();
 
             return View(bowlers);
         }
 
-  
     }
 }
