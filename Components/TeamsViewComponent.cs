@@ -17,6 +17,8 @@ namespace BowlingProject.Components
 
         public IViewComponentResult Invoke()
         {
+            ViewBag.bowlerTeam = RouteData?.Values["bowlerTeam"];
+
             var teams = repo.Bowlers
                 .Select(x => x.Team.TeamName)
                 .Distinct()

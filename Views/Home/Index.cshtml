@@ -4,21 +4,17 @@
 
 @model List<Bowler>
 
-<div class="container">
+@*<div class="container">
 
     <div class="row">
 
-        <div class="col">
-            <h3>Bowlers</h3>
-        </div>
-
-        <div class="col">
-            <Navlink class="btn btn-primary float-end">Add Bowler</Navlink>
-        </div>
+       
+        
+        
 
     </div>
 
-</div>
+</div>*@
 
 
 
@@ -27,10 +23,32 @@
 
     <div class="row">
         <div id="teams" class="col col-sm-3">
-            <vc:teams></vc:teams>
+            <div class="d-grid gap-1">
+                <vc:teams></vc:teams>
+            </div>
         </div>
 
         <div class="col">
+            <div class="d-flex flex-row justify-content-between">
+
+                <div class="p-2">
+                    <h4>@ViewBag.name</h4>
+                </div>
+
+                <div class="p-2">
+                    <a asp-controller="Home" asp-action="Add" class="btn btn-primary float-end">Add Bowler</a>
+                </div>
+
+            </div>
+
+            @*<div class="col">
+                
+            </div>
+
+            <div class="col">
+                
+            </div>*@
+
             <table class="table table-sm table-striped table-bordered">
 
                 <thead>
@@ -44,39 +62,40 @@
                         <th>State</th>
                         <th>Zip</th>
                         <th>Phone Number</th>
-                        
+
                     </tr>
 
                 </thead>
 
                 <tbody>
-        
+
                     @foreach (Bowler b in Model)
-                        {
-                           <tr>
-                               <td>@b.BowlerFirstName</td>
-                               <td>@b.BowlerMiddleInit</td>
-                               <td>@b.BowlerLastName</td>
-                               <td>@b.BowlerAddress</td>
-                               <td>@b.BowlerCity</td>
-                               <td>@b.BowlerState</td>
-                               <td>@b.BowlerZip</td>
-                               <td>@b.BowlerPhoneNumber</td>
+                    {
+                        <tr>
+                            <td>@b.BowlerFirstName</td>
+                            <td>@b.BowlerMiddleInit</td>
+                            <td>@b.BowlerLastName</td>
+                            <td>@b.BowlerAddress</td>
+                            <td>@b.BowlerCity</td>
+                            <td>@b.BowlerState</td>
+                            <td>@b.BowlerZip</td>
+                            <td>@b.BowlerPhoneNumber</td>
 
-                               <td>
-                                   <NavLink class="btn btn-warning btn-sm" href="">Edit</NavLink>
-                               </td>
+                            <td>
+                                <a asp-controller="Home" asp-action="Edit" asp-route-bowlerid="@b.BowlerID" class="btn btn-warning btn-sm">Edit</a>
+                            </td>
 
-                               <td>
-                                   <button class="btn btn-danger btn-sm">Delete</button> 
-                               </td>
-                           </tr>
-                        }
+                            <td>
+                                <a asp-controller="Home" asp-action="Delete" asp-route-bowlerid="@b.BowlerID" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
     </div>
 
 </div>
+
 
 

@@ -13,5 +13,28 @@ namespace BowlingProject.Models
         }
 
         public IQueryable<Bowler> Bowlers => _context.Bowlers;
+
+        public void CreateBowler (Bowler b)
+        {
+            _context.Add(b);
+            _context.SaveChanges();
+        }
+
+        public void SaveBowler (Bowler b)
+        {
+            _context.SaveChanges();
+        }
+
+        public void DeleteBowler (Bowler b)
+        {
+            _context.Remove(b);
+            _context.SaveChanges();
+        }
+        public void EditBowler (Bowler b)
+        {
+            _context.Update(b);
+            _context.SaveChanges();
+        }
+
     }
 }
